@@ -51,6 +51,9 @@ local function CombatLogInstall(parent)
     ChatFrame2ButtonFrameDownButton:SetParent(addonTable.hiddenFrame)
   end
   ChatFrame2:Show()
+  -- Prevent Blizzard's FCF system from repositioning ChatFrame2 after we've embedded it
+  ChatFrame2:UnregisterEvent("UPDATE_FLOATING_CHAT_WINDOWS")
+  ChatFrame2:UnregisterEvent("UPDATE_CHAT_WINDOWS")
 end
 
 Chattynator.API.RegisterCustomTab("COMBAT_LOG", "combat_log", CombatLogInstall)
